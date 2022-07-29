@@ -1,0 +1,11 @@
+.card1{
+    text-align: justify;
+    background-color: #BC6C25;
+    color: white;
+}
+
+.cardsAlign{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}

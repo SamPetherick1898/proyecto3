@@ -1,0 +1,11 @@
+.textContact{
+    text-align: justify;
+}
+.photoSam{
+    border-radius: 50%;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 8px 12px black;
+}
