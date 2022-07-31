@@ -14,9 +14,11 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import ShareIcon from '@mui/icons-material/Share';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Rating from '../Rating/Rating';
 
 //CSS
 import "./Cards.css"
+
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -69,6 +71,7 @@ export default function RecipeReviewCard() {
         <IconButton href='https://www.facebook.com/' target="_blank" aria-label="share">
           <ShareIcon />
         </IconButton>
+        <Rating/>
         <ExpandMore
           expand={expanded}
           onClick={handleExpandClick}

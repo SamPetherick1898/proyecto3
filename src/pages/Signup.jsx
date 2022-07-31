@@ -12,6 +12,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
 
 function Copyright(props) {
   return (
@@ -76,7 +77,7 @@ export default function SignInSide() {
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label="Correo electrónico"
                 name="email"
                 autoComplete="email"
                 autoFocus
@@ -86,11 +87,25 @@ export default function SignInSide() {
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 id="password"
                 autoComplete="current-password"
               />
+        <FormControl fullWidth>
+          <InputLabel id="demo-select-small">Rol</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            //value={age}
+            label="Age"
+            //onChange={handleChange}
+          >
+            <MenuItem value={10}>Usuario</MenuItem>
+            <MenuItem value={4}>Administrador</MenuItem>
+          </Select>
+        </FormControl>
+
               <Button
                 type="submit"
                 fullWidth
@@ -122,8 +137,9 @@ export default function Signup({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
+    rol: ","
   });
-  const { username, password } = form;
+  const { username, password, rol } = form;
   const [error, setError] = useState(null);
   const navigate = useNavigate();
 
@@ -137,6 +153,7 @@ export default function Signup({ authenticate }) {
     const credentials = {
       username,
       password,
+      rol,
     };
     signup(credentials).then((res) => {
       if (!res.status) {

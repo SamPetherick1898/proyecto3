@@ -14,6 +14,8 @@ import Signup from "./pages/Signup";
 import Library from "./pages/Library";
 import About from "./pages/About"
 import Photos from "./pages/Photos"
+import RegistroLibro from "./pages/RegistroLibro";
+import RegistroPublicaciones from "./pages/RegistroPublicaciones";
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -71,6 +73,8 @@ export default function App() {
         <Route path="/Library" element={<Library/>} />
         <Route path="/About" element={<About/>}/>
         <Route path="/Photos" element={<Photos/>}/>
+        <Route path="/Libro" element={<RegistroLibro/>}/>
+        <Route path="/Publicaciones" element={<RegistroPublicaciones/>}/>
       </Routes>
     </div>
   );

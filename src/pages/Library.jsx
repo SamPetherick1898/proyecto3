@@ -32,12 +32,6 @@ function library() {
 
               <Music/>
 
-              <img 
-                className="flag" 
-                src="https://www.ecured.cu/images/c/c2/Bandera_del_Segundo_Imperio_Mexicano_%281864-1867%29.png"
-                alt="Second Mexican Empire Flag"
-              />
-
               <Container>
                 <Table/>
               </Container>
