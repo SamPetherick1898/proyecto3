@@ -20,10 +20,10 @@ import "./Navbar.css"
 const pages = ['Acerca', 'Contacto', 'Librería'];
 const settings = ['Salir'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
-
+  const {user, handleLogout} = props;
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -45,7 +45,7 @@ const ResponsiveAppBar = () => {
         <Toolbar disableGutters>
 
         <Button href="/" variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-        <img className="helmet" src="https://www.mexicodesconocido.com.mx/wp-content/uploads/2020/08/Escudos-de-la-bandera-de-Mexico-maximiliani-900x921.png" alt="helmet" href="/"/>
+        <img className="helmet" src="/Images/shield.png" alt="helmet" href="/"/>
           </Button>
           
 
@@ -121,6 +121,14 @@ const ResponsiveAppBar = () => {
                  Librería
                 </Button>
               </Link>
+              <Link to="/Publications">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                 Publicaciones
+                </Button>
+              </Link>
               <Link to="/auth/Signup">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -135,6 +143,22 @@ const ResponsiveAppBar = () => {
                   sx={{ my: 2, color: 'white', display: 'block' }}
                 >
                  Acceder
+                </Button>
+              </Link>
+              <Link to="/libro">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                 Nuevo libro
+                </Button>
+              </Link>
+              <Link to="/post-new">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                 Nueva publicación
                 </Button>
               </Link>
               

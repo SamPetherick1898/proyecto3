@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import Carousel from "../components/Carousel/Carousel"
+import axios from 'axios';
 
 //CSS
 import "../pages/About.css"
@@ -23,6 +24,8 @@ function Copyright() {
 }
 
 export default function StickyFooter() {
+ 
+  
   return (
     <Box
       sx={{
@@ -39,7 +42,7 @@ export default function StickyFooter() {
         
         <img
             className='photoSam'
-            src='https://scontent.fmex1-4.fna.fbcdn.net/v/t39.30808-6/240719656_101364502281113_6128061701332004636_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=174925&_nc_eui2=AeGV0D7WoNbsNfkqOoqBFrN-h2B2gyR87GmHYHaDJHzsaYZ9pLf1BB36sGSTFccp0qoqdb9Xw5XEZLsYpQDd2cLP&_nc_ohc=t8b3KC36lpEAX-e0vKG&_nc_ht=scontent.fmex1-4.fna&oh=00_AT8u592ZipeCUbgn90qOMB7PM2G1g70t_qOMmsXdaOIVYw&oe=62E89E81'
+            src='/Images/sam.jpeg'
             alt="Samuel"
         />
 

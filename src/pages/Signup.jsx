@@ -13,6 +13,11 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { FormControl, InputLabel, Select, MenuItem } from '@mui/material';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { signup } from "../services/auth";
+import * as PATHS from "../utils/paths";
+import * as USER_HELPERS from "../utils/userToken";
 
 function Copyright(props) {
   return (
@@ -29,7 +34,46 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignInSide() {
+export default function SignInSide({ authenticate }) {
+
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+    rol: ",",
+    email: ""
+  });
+  const { username, password, rol, email } = form;
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+    return setForm({ ...form, [name]: value });
+  }
+
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const credentials = {
+      username,
+      password,
+      rol,
+      email
+    };
+    signup(credentials).then((res) => {
+      if (!res.status) {
+        // unsuccessful signup
+        console.error("Signup was unsuccessful: ", res);
+        return setError({
+          message: "Signup was unsuccessful! Please check the console.",
+        });
+      }
+      // successful signup
+      USER_HELPERS.setUserToken(res.data.accessToken);
+      authenticate(res.data.user);
+      navigate(PATHS.HOMEPAGE);
+    });
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -49,7 +93,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://scontent-qro1-1.xx.fbcdn.net/v/t1.6435-9/60763002_2293308780884306_5843761253448679424_n.jpg?_nc_cat=101&ccb=1-7&_nc_sid=19026a&_nc_eui2=AeEMMrWCRyDCgKP80_ZlDWX-Hq5aBd6VSAserloF3pVIC2R9Awp7G7s3Dz-zTP7OFcwNVg9kV9_jRHoayFEMwBmA&_nc_ohc=QTHcmbZxa-MAX9RW7JN&_nc_ht=scontent-qro1-1.xx&oh=00_AT_c00Qu-Vt5loiHJJ1xAv-rRAIjox4Z8KKwJqk2kWfBtA&oe=630A961C)',
+            backgroundImage: 'url("/Images/grave.jpeg")',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],
@@ -71,7 +115,19 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Registrarse
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleFormSubmission} sx={{ mt: 1 }}>
+            <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="username"
+                label="Usuario"
+                name="username"
+                autoComplete="username"
+                autoFocus
+                value={username}
+                onChange={handleInputChange}
+              />
               <TextField
                 margin="normal"
                 required
@@ -81,6 +137,8 @@ export default function SignInSide() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                value={email}
+                onChange={handleInputChange}
               />
               <TextField
                 margin="normal"
@@ -91,18 +149,21 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                value={password}
+                onChange={handleInputChange}
               />
         <FormControl fullWidth>
           <InputLabel id="demo-select-small">Rol</InputLabel>
           <Select
             labelId="demo-select-small"
             id="demo-select-small"
-            //value={age}
-            label="Age"
-            //onChange={handleChange}
+            name="rol"
+            value={rol}
+            label="rol"
+            onChange={handleInputChange}
           >
-            <MenuItem value={10}>Usuario</MenuItem>
-            <MenuItem value={4}>Administrador</MenuItem>
+            <MenuItem value={"usuario"}>Usuario</MenuItem>
+            <MenuItem value={"administrador"}>Administrador</MenuItem>
           </Select>
         </FormControl>
 

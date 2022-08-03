@@ -57,7 +57,7 @@ export default function RecipeReviewCard() {
       <CardMedia
         component="img"
         height="350"
-        image="https://scontent-qro1-1.xx.fbcdn.net/v/t39.30808-6/269914557_3062343060647537_5908862669746357962_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=730e14&_nc_eui2=AeGEoVwtFl7Gs4IEkKHgbSg9yOx96P69Nw3I7H3o_r03DSfk47ba7YsjodaSCAtiJik5f3UFx3YZPhQ9EGP0MS1T&_nc_ohc=bmY43RcWRuwAX9poDST&_nc_ht=scontent-qro1-1.xx&oh=00_AT-7DqlT4DsISFOOY1pWxNA3MiRYXQex9c-ynYaRseKWXA&oe=62E7A21F"
+        image="/Images/pierre.jpeg"
         alt="James grave"
       />
       <CardContent>

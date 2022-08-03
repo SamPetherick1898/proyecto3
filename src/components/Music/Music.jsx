@@ -97,7 +97,7 @@ export default function MusicPlayerSlider() {
           <CoverImage>
             <img
               alt="can't win - Chilling Sunday"
-              src="https://mediateca.inah.gob.mx/repositorio/islandora/object/disco:5/datastream/TN/view"
+              src="/Images/view.jpeg"
             />
           </CoverImage>
           <Box sx={{ ml: 1.5, minWidth: 0 }}>
@@ -112,105 +112,9 @@ export default function MusicPlayerSlider() {
             </Typography>
           </Box>
         </Box>
-        <Slider
-          aria-label="time-indicator"
-          size="small"
-          value={position}
-          min={0}
-          step={1}
-          max={duration}
-          onChange={(_, value) => setPosition(value)}
-          sx={{
-            color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
-            height: 4,
-            '& .MuiSlider-thumb': {
-              width: 8,
-              height: 8,
-              transition: '0.3s cubic-bezier(.47,1.64,.41,.8)',
-              '&:before': {
-                boxShadow: '0 2px 12px 0 rgba(0,0,0,0.4)',
-              },
-              '&:hover, &.Mui-focusVisible': {
-                boxShadow: `0px 0px 0px 8px ${
-                  theme.palette.mode === 'dark'
-                    ? 'rgb(255 255 255 / 16%)'
-                    : 'rgb(0 0 0 / 16%)'
-                }`,
-              },
-              '&.Mui-active': {
-                width: 20,
-                height: 20,
-              },
-            },
-            '& .MuiSlider-rail': {
-              opacity: 0.28,
-            },
-          }}
-        />
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            mt: -2,
-          }}
-        >
-          <TinyText>{formatDuration(position)}</TinyText>
-          <TinyText>-{formatDuration(duration - position)}</TinyText>
-        </Box>
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            mt: -1,
-          }}
-        >
-          <IconButton aria-label="previous song">
-            <FastRewindRounded fontSize="large" htmlColor={mainIconColor} />
-          </IconButton>
-          <IconButton
-            aria-label={paused ? 'play' : 'pause'}
-            onClick={() => setPaused(!paused)}
-          >
-            {paused ? (
-              <PlayArrowRounded
-                sx={{ fontSize: '3rem' }}
-                htmlColor={mainIconColor}
-              />
-            ) : (
-              <PauseRounded sx={{ fontSize: '3rem' }} htmlColor={mainIconColor} />
-            )}
-          </IconButton>
-          <IconButton aria-label="next song">
-            <FastForwardRounded fontSize="large" htmlColor={mainIconColor} />
-          </IconButton>
-        </Box>
-        <Stack spacing={2} direction="row" sx={{ mb: 1, px: 1 }} alignItems="center">
-          <VolumeDownRounded htmlColor={lightIconColor} />
-          <Slider
-            aria-label="Volume"
-            defaultValue={30}
-            sx={{
-              color: theme.palette.mode === 'dark' ? '#fff' : 'rgba(0,0,0,0.87)',
-              '& .MuiSlider-track': {
-                border: 'none',
-              },
-              '& .MuiSlider-thumb': {
-                width: 24,
-                height: 24,
-                backgroundColor: '#fff',
-                '&:before': {
-                  boxShadow: '0 4px 8px rgba(0,0,0,0.4)',
-                },
-                '&:hover, &.Mui-focusVisible, &.Mui-active': {
-                  boxShadow: 'none',
-                },
-              },
-            }}
-          />
-          <VolumeUpRounded htmlColor={lightIconColor} />
-        </Stack>
+        <audio controls>
+          <source src="/Los_cangrejos.mpeg" type="audio/ogg"></source>
+        </audio>
       </Widget>
       <WallPaper />
     </Box>

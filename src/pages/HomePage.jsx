@@ -27,7 +27,7 @@ function HomePage() {
 
         <img
             className="spqr"
-            src="https://ae01.alicdn.com/kf/HTB18C4Uq3KTBuNkSne1q6yJoXXae/Bandera-del-Imperio-romano-antiguo-SPQR-banderas-del-reino-romano-3x5-pies-90x150-cm.jpg_Q90.jpg_.webp"
+            src="/Images/spqr.jpeg"
             alt="SPQR"
           />
 

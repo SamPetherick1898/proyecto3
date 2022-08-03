@@ -95,7 +95,7 @@ export default function SignInSide() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage: 'url(https://scontent.fmex1-1.fna.fbcdn.net/v/t1.6435-9/75328554_2438526153029234_2356489465431588864_n.jpg?_nc_cat=106&ccb=1-7&_nc_sid=19026a&_nc_eui2=AeFaDYBrQ_QqNWG-9dpeyOn4M_Vgf9Sa-r0z9WB_1Jr6vXE_m29xbAwtgb_WWetYKbfRJZEEIcQe4qg3BAsYdLc6&_nc_ohc=nj7EkjaqyYQAX_2gAhB&_nc_ht=scontent.fmex1-1.fna&oh=00_AT9Djr6bKEj_h0G_EaII-q9WxbUPsMSLbc2YeLDXHYx_kQ&oe=63078EE1)',
+            backgroundImage: 'url(/Images/seahorses.jpeg)',
             backgroundRepeat: 'no-repeat',
             backgroundColor: (t) =>
               t.palette.mode === 'light' ? t.palette.grey[50] : t.palette.grey[900],

@@ -40,41 +40,32 @@ function RegistroLibro() {
       pages: pages,
       editorial: editorial,
     }
-    fetch('http://localhost:5005/api/books/post-book', {
-      method: "POST",
-      body: JSON.stringify(bookObject),
-      headers:{"Content-Type" : "application/json"}
-    })
-    .then(res => res.json())
-    .then(data => console.log(data))
-    .catch(console.log)
+   // fetch('http://localhost:5005/api/books/post-book', {
+     // method: "POST",
+      //body: JSON.stringify(bookObject),
+      //headers:{"Content-Type" : "application/json"}
+    //})
+    //.then(res => res.json())
+    //.then(data => console.log(data))
+    //.catch(console.log)
   }
 
   const onChange = (event) => {
-    if (event.target.name === "name") {
+    if (event.target.name === "Name") {
       setName(event.target.value)
     }
-    if (event.target.name === "url") {
+    if (event.target.name === "Description") {
       setUrl(event.target.value)
     }
-    if (event.target.name === "pages") {
+    if (event.target.name === "Image") {
       setPages(event.target.value)
-    }
-    if (event.target.name === "year") {
-      setYear(event.target.value)
-    }
-    if (event.target.name === "acceso") {
-      setAcceso(event.target.value)
-    }
-    if (event.target.name === "editorial") {
-      setEditorial(event.target.value)
-    }
   }
+}
 
 
   return (
     <Container>
-        <h1>Registro de libro</h1>
+        <h1>Registro de publicación</h1>
         <React.Fragment>
       <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
@@ -92,9 +83,9 @@ function RegistroLibro() {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="URL"
-            name="url"
-            label="URL"
+            id="Description"
+            name="Description"
+            label="Descripción"
             fullWidth
             autoComplete="cc-number"
             variant="standard"
@@ -104,55 +95,16 @@ function RegistroLibro() {
         <Grid item xs={12} md={6}>
           <TextField
             required
-            id="Pages"
-            name="pages"
-            label="Páginas"
+            id="Image"
+            name="Image"
+            label="Imagen"
             fullWidth
-            autoComplete="cc-exp"
+            autoComplete="cc-number"
             variant="standard"
             onChange={(e) => onChange(e)}
           />
         </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="Editorial"
-            name="editorial"
-            label="Editorial"
-            helperText=""
-            fullWidth
-            autoComplete="cc-csc"
-            variant="standard"
-            onChange={(e) => onChange(e)}
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="Year"
-            name="year"
-            label="Año"
-            helperText=""
-            fullWidth
-            autoComplete="cc-csc"
-            variant="standard"
-            onChange={(e) => onChange(e)}
-            
-          />
-        </Grid>
-        <Grid item xs={12} md={6}>
-          <TextField
-            required
-            id="Access"
-            label="Acceso"
-            name="acceso"
-            helperText=""
-            fullWidth
-            autoComplete="cc-csc"
-            variant="standard"
-            onChange={(e) => onChange(e)}
-          />
-        </Grid>
+       
       </Grid>
     </React.Fragment>
 
@@ -162,13 +114,9 @@ function RegistroLibro() {
 
     <img 
          className="flag" 
-         src="https://www.ecured.cu/images/c/c2/Bandera_del_Segundo_Imperio_Mexicano_%281864-1867%29.png"
+         src="/Images/flag.png"
         alt="Second Mexican Empire Flag"
     />
-
-
-
-    
      <Box
         component="footer"
         sx={{

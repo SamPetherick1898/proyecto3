@@ -5,7 +5,7 @@ import Container from "@mui/material/Container";
 import Music from "../components/Music/Music";
 
 //CSS
-import "../pages/Library.css"
+import "../pages/Library.css";
 
 function library() {
     return (
@@ -16,7 +16,7 @@ function library() {
                   <Card1/>
                   <img 
                     className="galleon" 
-                    src="https://cdn.pixabay.com/photo/2012/04/18/18/32/sailboat-37510_960_720.png"
+                    src="/Images/galleon.webp"
                     alt="Galleon"
                     />
                   <Card2/>

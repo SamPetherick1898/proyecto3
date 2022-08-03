@@ -22,6 +22,7 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import Link from '@mui/material/Link';
 import { Container } from '@mui/system';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
 
 function createData(book, pages) {
   return {
@@ -88,6 +89,7 @@ const rows = [
   createData(<a href="http://cdigital.dgb.uanl.mx/la/1020002768/1020002768.PDF" target="_blank">Charles D' Hericault, "Maximiliano y México. Historia de los últimos meses del imperio mexicano"</a>, 419),
   createData(<a href="http://www.scielo.org.mx/article_plus.php?pid=S0185-26202004000200031&tlng=es&lng=es#aff1" target="_blank">O'Dogherty Madrazo, Laura, "La guardia de la emperatriz Carlota su trágica aventura en México, 1864-1867"</a>, 0),
   createData(<a href="http://132.248.9.195/pmig2016/0158737/0158737.pdf" target="_blank">Aguilar Ochoa, Arturo "La fotografía durante el Imperio de Maximiliano"</a>, 301),
+  createData(<a href="http://132.248.9.195/pmig2016/0158737/0158737.pdf" target="_blank">Leonardo Márquez, "El imperio y los imperialistas"</a>, 271)
 ];
 
 function Copyright() {
@@ -228,7 +230,7 @@ const EnhancedTableToolbar = (props) => {
       )}
 
       {numSelected > 0 ? (
-        <Tooltip title="Delete">
+        <Tooltip title="Delete"> 
           <IconButton>
             <DeleteIcon />
           </IconButton>
