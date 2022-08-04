@@ -152,20 +152,7 @@ export default function SignInSide({ authenticate }) {
                 value={password}
                 onChange={handleInputChange}
               />
-        <FormControl fullWidth>
-          <InputLabel id="demo-select-small">Rol</InputLabel>
-          <Select
-            labelId="demo-select-small"
-            id="demo-select-small"
-            name="rol"
-            value={rol}
-            label="rol"
-            onChange={handleInputChange}
-          >
-            <MenuItem value={"usuario"}>Usuario</MenuItem>
-            <MenuItem value={"administrador"}>Administrador</MenuItem>
-          </Select>
-        </FormControl>
+      
 
               <Button
                 type="submit"

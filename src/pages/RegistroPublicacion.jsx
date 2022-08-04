@@ -8,17 +8,17 @@ import axios from 'axios';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
 import Box from '@mui/material/Box';
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom"
 
 //CSS
 import "../pages/auth.css";
 
-function RegistroLibro() {
+function RegistroPublicacion() {
   const [name, setName] = React.useState("")
-  const [url, setUrl] = React.useState("")
-  const [pages, setPages] = React.useState("")
-  const [editorial, setEditorial] = React.useState("")
-  const [year, setYear] = React.useState("")
-  const [acceso, setAcceso] = React.useState("")
+  const [image, setImage] = React.useState("")
+  const [description, setDescription] = React.useState("")
+  const navi= useNavigate()
 
   function Copyright() {
     return (
@@ -34,31 +34,31 @@ function RegistroLibro() {
   }
 
   const test = () => {
-    const bookObject = {
+    const publicationObject = {
       name: name,
-      url: url,
-      pages: pages,
-      editorial: editorial,
+      description: description,
+      image: image,
     }
-   // fetch('http://localhost:5005/api/books/post-book', {
-     // method: "POST",
-      //body: JSON.stringify(bookObject),
-      //headers:{"Content-Type" : "application/json"}
-    //})
-    //.then(res => res.json())
-    //.then(data => console.log(data))
-    //.catch(console.log)
+    console.log(publicationObject)
+   fetch(`${process.env.REACT_APP_SERVER_URL}/publications/post-new`, {
+      method: "POST",
+      body: JSON.stringify(publicationObject),
+      headers:{"Content-Type" : "application/json"}
+    })
+    .then(res => res.json())
+    .then(data => navi("/Publications"))
+    .catch(console.log)
   }
 
   const onChange = (event) => {
-    if (event.target.name === "Name") {
+    if (event.target.name === "name") {
       setName(event.target.value)
     }
-    if (event.target.name === "Description") {
-      setUrl(event.target.value)
+    if (event.target.name === "description") {
+      setDescription(event.target.value)
     }
-    if (event.target.name === "Image") {
-      setPages(event.target.value)
+    if (event.target.name === "image") {
+      setImage(event.target.value)
   }
 }
 
@@ -78,30 +78,33 @@ function RegistroLibro() {
             autoComplete="cc-name"
             variant="standard"
             onChange={(e) => onChange(e)}
+            value={name}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
             id="Description"
-            name="Description"
+            name="description"
             label="Descripción"
             fullWidth
             autoComplete="cc-number"
             variant="standard"
             onChange={(e) => onChange(e)}
+            value={description}
           />
         </Grid>
         <Grid item xs={12} md={6}>
           <TextField
             required
             id="Image"
-            name="Image"
+            name="image"
             label="Imagen"
             fullWidth
             autoComplete="cc-number"
             variant="standard"
             onChange={(e) => onChange(e)}
+            value={image}
           />
         </Grid>
        
@@ -109,7 +112,8 @@ function RegistroLibro() {
     </React.Fragment>
 
     <div className='add-Button'>
-    <button onClick={test}>Añadir</button>
+   
+    <Button onClick={test} variant="contained">Añadir</Button>
     </div>
 
     <img 
@@ -144,4 +148,4 @@ function RegistroLibro() {
   )
 }
 
-export default RegistroLibro;
+export default RegistroPublicacion;

@@ -40,7 +40,7 @@ function RegistroLibro() {
       pages: pages,
       editorial: editorial,
     }
-    fetch('http://localhost:5005/api/books/post-book', {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/books/post-book`, {
       method: "POST",
       body: JSON.stringify(bookObject),
       headers:{"Content-Type" : "application/json"}

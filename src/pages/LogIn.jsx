@@ -110,6 +110,60 @@ export default function SignInSide() {
 
 
 /*
+
+
+
+export default function LogIn({ authenticate }) {
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
+  const { username, password } = form;
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    return setForm({ ...form, [name]: value });
+  }
+
+  function handleFormSubmission(event) {
+    event.preventDefault();
+    const credentials = {
+      username,
+      password,
+    };
+    login(credentials).then((res) => {
+      if (!res.status) {
+        return setError({ message: "Invalid credentials" });
+      }
+      USER_HELPERS.setUserToken(res.data.accessToken);
+      authenticate(res.data.user);
+      if(res.data.user.role == "admin"){
+        navigate("/admin");
+      }else{
+        navigate("/");
+      }
+      navigate(PATHS.HOMEPAGE);
+    });
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from "react";
 import { login } from "../services/auth";
 import { useNavigate } from "react-router-dom";
@@ -137,7 +191,8 @@ export default function LogIn({ authenticate }) {
     const credentials = {
       username,
       password,
-    };
+    }; 
+
     login(credentials).then((res) => {
       if (!res.status) {
         return setError({ message: "Invalid credentials" });

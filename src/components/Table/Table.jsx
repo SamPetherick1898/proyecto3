@@ -400,8 +400,8 @@ export default function EnhancedTable() {
           mt: 'auto',
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+            ? theme.palette.error.dark[200]
+            : theme.palette.error.dark[200],
         }}
       >
         <Container maxWidth="sm">

@@ -3,9 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import Card1 from "../components/Cards/Card1";
-import Card2 from "../components/Cards/Card2";
-
+import CardPublications from "../components/Cards/CardPublications"
 
 //CSS
 import "../pages/Library.css";
@@ -28,9 +26,10 @@ function Publications() {
   const [publications, setPub] = useState([])
 
   useEffect(()=> {
-    fetch("http://localhost:5005/api/publications")
+    fetch(`${process.env.REACT_APP_SERVER_URL}/publications`)
     .then(data => data.json() )
     .then( publicaciones => {
+      console.log(publicaciones)
       setPub(publicaciones)
     })
     .catch(console.log)
@@ -38,17 +37,24 @@ function Publications() {
 
   return (
     <div>
+
         <h1>Publicaciones</h1>
 
-  
+      <Box sx={{ 
 
+        display: "flex",
+        flexWrap: "wrap",
+        padding: "20px 50px",
+        justifyContent: "space-between",
+        margin: "5%"
 
+       }}>
         {
           publications.map((pub) => {
-            return <div key={pub._id}>{pub.name} {pub.description } <img src={pub.image} alt="img"/></div>
+            return <CardPublications key={pub._id} name={pub.name} description={pub.description } image={pub.image} alt="img"/>
           })
         }
-
+      </Box>
 
         <img 
          className="flag" 
@@ -65,8 +71,8 @@ function Publications() {
           mt: 'auto',
           backgroundColor: (theme) =>
             theme.palette.mode === 'light'
-              ? theme.palette.grey[200]
-              : theme.palette.grey[800],
+              ? theme.palette.error.dark[200]
+              : theme.palette.error.dark[200],
         }}
       >
         <Container maxWidth="sm">
@@ -79,10 +85,5 @@ function Publications() {
     </div>
   )
 }
-
-//hacer los formularios
-//hacer los formularios controlados
-//states
-//axios y/o fetch
 
 export default Publications

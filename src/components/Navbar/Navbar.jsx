@@ -15,7 +15,7 @@ import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
 //CSS
-import "./Navbar.css"
+import "./Navbar.css";
 
 const pages = ['Acerca', 'Contacto', 'Librería'];
 const settings = ['Salir'];
@@ -99,7 +99,7 @@ const ResponsiveAppBar = (props) => {
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
-              textDecoration: 'none',
+              textDecoration: 'none'
             }}
           >
             LOGO
@@ -129,6 +129,10 @@ const ResponsiveAppBar = (props) => {
                  Publicaciones
                 </Button>
               </Link>
+              
+
+             { /* Botón de registro */ }
+              
               <Link to="/auth/Signup">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -137,6 +141,13 @@ const ResponsiveAppBar = (props) => {
                  Registrarse
                 </Button>
               </Link>
+
+
+              { /* Botón para acceder */ }
+
+            { !user && (
+                <>
+
               <Link to="/auth/Login">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -145,6 +156,11 @@ const ResponsiveAppBar = (props) => {
                  Acceder
                 </Button>
               </Link>
+                </>
+              ) 
+            }
+
+
               <Link to="/libro">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -161,6 +177,8 @@ const ResponsiveAppBar = (props) => {
                  Nueva publicación
                 </Button>
               </Link>
+
+
               
           </Box>
 
@@ -228,6 +246,20 @@ const Navbar = (props) => {
 export default Navbar;
 
 
-<img className="helmet" src="https://cdn-icons-png.flaticon.com/512/112/112255.png" alt="helmet"/>
+  <FormControl fullWidth>
+          <InputLabel id="demo-select-small">Rol</InputLabel>
+          <Select
+            labelId="demo-select-small"
+            id="demo-select-small"
+            name="rol"
+            value={rol}
+            label="rol"
+            onChange={handleInputChange}
+          >
+            <MenuItem value={"usuario"}>Usuario</MenuItem>
+            <MenuItem value={"administrador"}>Administrador</MenuItem>
+          </Select>
+        </FormControl>
+
 */
 
