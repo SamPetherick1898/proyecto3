@@ -1,5 +1,4 @@
-
-import * as React from 'react';
+import React, {useState} from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -13,6 +12,11 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { login } from "../services/auth";
+import { useNavigate } from "react-router-dom";
+import "./Signup";
+import * as PATHS from "../utils/paths";
+import * as USER_HELPERS from "../utils/userToken";
 
 function Copyright(props) {
   return (
@@ -29,15 +33,45 @@ function Copyright(props) {
 
 const theme = createTheme();
 
-export default function SignInSide() {
-  const handleSubmit = (event) => {
+export default function SignInSide(props) {
+  const {authenticate} = props
+  
+  const [form, setForm] = useState({
+    username: "",
+    password: "",
+  });
+  const { username, password } = form;
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+
+
+  function handleInputChange(event) {
+    const { name, value } = event.target;
+
+    return setForm({ ...form, [name]: value });
+  }
+
+  function handleFormSubmission(event) {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
+    const credentials = {
+      username,
+      password,
+    };
+    login(credentials).then((res) => {
+      if (!res.status) {
+        return setError({ message: "Invalid credentials" });
+      }
+      USER_HELPERS.setUserToken(res.data.accessToken);
+      authenticate(res.data.user);
+      if(res.data.user.role == "admin"){
+        navigate("/admin");
+      }else{
+        navigate("/");
+      }
+      navigate(PATHS.HOMEPAGE);
     });
-  };
+  }
+
 
   return (
     <ThemeProvider theme={theme}>
@@ -56,16 +90,17 @@ export default function SignInSide() {
             <Typography component="h1" variant="h5">
               Acceder
             </Typography>
-            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            <Box component="form" noValidate onSubmit={handleFormSubmission} sx={{ mt: 1 }}>
               <TextField
                 margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
-                name="email"
-                autoComplete="email"
+                id="username"
+                label="Usuario"
+                name="username"
+                autoComplete="username"
                 autoFocus
+                onChange={handleInputChange}
               />
               <TextField
                 margin="normal"
@@ -76,6 +111,7 @@ export default function SignInSide() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleInputChange}
               />
               <Button
                 type="submit"

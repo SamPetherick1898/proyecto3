@@ -22,14 +22,14 @@ function Copyright() {
     );
   }
 
-function Publications() {
+function Publications(props) {
   const [publications, setPub] = useState([])
+  const {user} = props
 
   useEffect(()=> {
     fetch(`${process.env.REACT_APP_SERVER_URL}/publications`)
     .then(data => data.json() )
     .then( publicaciones => {
-      console.log(publicaciones)
       setPub(publicaciones)
     })
     .catch(console.log)
@@ -51,7 +51,7 @@ function Publications() {
        }}>
         {
           publications.map((pub) => {
-            return <CardPublications key={pub._id} name={pub.name} description={pub.description } image={pub.image} id={pub._id} alt="img"/>
+            return <CardPublications key={pub._id} user={user} name={pub.name} description={pub.description } image={pub.image} id={pub._id} alt="img"/>
           })
         }
       </Box>

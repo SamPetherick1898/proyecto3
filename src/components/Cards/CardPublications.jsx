@@ -11,9 +11,8 @@ import { useNavigate } from "react-router-dom";
 
 
 export default function ActionAreaCard(props) {
-    const { image, name, description, id } = props
+    const { image, name, description, id, user } = props
     const navi = useNavigate()
-    const {user} = props;
 
     function deletePublication(){
       fetch(`${process.env.REACT_APP_SERVER_URL}/publications/delete/${id}`, {method:"delete"})
@@ -55,7 +54,9 @@ export default function ActionAreaCard(props) {
             {description}
           </Typography>
 
-          { user?.rol==="administrador" && (
+          { /* Falta que el usuario no pueda ver lo botones del crud, pero si el admin */}
+
+          { user?.rol === "administrador" && ( 
                 <>
           <EditIcon onClick={editPublication}/>
           <DeleteIcon onClick={deletePublication}/>

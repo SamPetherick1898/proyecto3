@@ -70,13 +70,13 @@ export default function App() {
           <Route key={route.path} path={route.path} element={route.element} />
         )) */}
         <Route path="/" element={<HomePage/>} />
-        <Route path="/auth/login" element={<LogIn />} />
+        <Route path="/auth/login" element={<LogIn authenticate={authenticate}/>} />
         <Route path="/auth/signup" element={<Signup authenticate={authenticate}/>} />
         <Route path="/Library" element={<Library/>} />
         <Route path="/About" element={<About/>}/>
         <Route path="/Photos" element={<Photos/>}/>
         <Route path="/Libro" element={<RegistroLibro/>}/>
-        <Route path="/Publications" element={ <RegistroPublications />  }/>
+        <Route path="/Publications" element={ <RegistroPublications user={user}/>  }/>
         <Route path="/post-new" element={ <NuevaPublicacion />  }/>
         <Route path="/editpublication" element={ <EditarPublicacion />  }/>
       </Routes>

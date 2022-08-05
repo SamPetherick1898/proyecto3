@@ -39,7 +39,6 @@ function RegistroPublicacion() {
       description: description,
       image: image,
     }
-    console.log(publicationObject)
    fetch(`${process.env.REACT_APP_SERVER_URL}/publications/post-new`, {
       method: "POST",
       body: JSON.stringify(publicationObject),
