@@ -51,7 +51,7 @@ function Publications() {
        }}>
         {
           publications.map((pub) => {
-            return <CardPublications key={pub._id} name={pub.name} description={pub.description } image={pub.image} alt="img"/>
+            return <CardPublications key={pub._id} name={pub.name} description={pub.description } image={pub.image} id={pub._id} alt="img"/>
           })
         }
       </Box>

@@ -78,17 +78,15 @@ function HomePage() {
           </Box>
         </Grid>
       </Grid>
-       
-            
       
           
         
       </Paper>
       
        
-      <Grid className='boxes'>
+      <Grid className='boxes' sx={{mt:5}}>
 
-
+      <Container>
         <Typography paragraph>
           ¡Cuidado!  
         </Typography>
@@ -100,12 +98,13 @@ function HomePage() {
         <Typography paragraph>
           Marco Aurelio, Meditaciones, Libro VI, (30)
         </Typography>
+      </Container>
          
       </Grid>
 
           <div className="video">
               <h2>Meditaciones, Emperador Marco Aurelio</h2>
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/wXAeQSxX_7w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/wXAeQSxX_7w" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
           </div>
 
 

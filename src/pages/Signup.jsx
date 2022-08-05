@@ -39,7 +39,7 @@ export default function SignInSide({ authenticate }) {
   const [form, setForm] = useState({
     username: "",
     password: "",
-    rol: ",",
+    rol: "usuario",
     email: ""
   });
   const { username, password, rol, email } = form;

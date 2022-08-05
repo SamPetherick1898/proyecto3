@@ -14,6 +14,9 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from 'react-router-dom';
 
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Stack from '@mui/material/Stack';
+
 //CSS
 import "./Navbar.css";
 
@@ -24,6 +27,7 @@ const ResponsiveAppBar = (props) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const {user, handleLogout} = props;
+
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -131,7 +135,29 @@ const ResponsiveAppBar = (props) => {
               </Link>
               
 
-             { /* Botón de registro */ }
+
+              { user?.rol==="administrador" && (
+                <>
+
+              <Link to="/post-new">
+                <Button
+                  onClick={handleCloseNavMenu}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                 Nueva publicación
+                </Button>
+              </Link>
+              </>
+              )
+              }
+
+      
+
+
+        { !user && (
+                <>
+
+                { /* Botón de registro */ }
               
               <Link to="/auth/Signup">
                 <Button
@@ -142,11 +168,7 @@ const ResponsiveAppBar = (props) => {
                 </Button>
               </Link>
 
-
               { /* Botón para acceder */ }
-
-            { !user && (
-                <>
 
               <Link to="/auth/Login">
                 <Button
@@ -161,6 +183,8 @@ const ResponsiveAppBar = (props) => {
             }
 
 
+            { /* Botón para acceder 
+
               <Link to="/libro">
                 <Button
                   onClick={handleCloseNavMenu}
@@ -169,14 +193,11 @@ const ResponsiveAppBar = (props) => {
                  Nuevo libro
                 </Button>
               </Link>
-              <Link to="/post-new">
-                <Button
-                  onClick={handleCloseNavMenu}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
-                >
-                 Nueva publicación
-                </Button>
-              </Link>
+*/ }
+
+
+
+              
 
 
               
@@ -205,7 +226,7 @@ const ResponsiveAppBar = (props) => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={handleLogout}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
